@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2b1750"/>
+      <stop offset="35%" stop-color="#7a3b6d"/>
+      <stop offset="60%" stop-color="#e0684f"/>
+      <stop offset="78%" stop-color="#f4a460"/>
+      <stop offset="100%" stop-color="#ffd28a"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f4a15a"/>
+      <stop offset="30%" stop-color="#a8506a"/>
+      <stop offset="100%" stop-color="#3c2244"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff3d6" stop-opacity="0.95"/>
+      <stop offset="40%" stop-color="#ffcf87" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#ffcf87" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hillFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5c3556"/>
+      <stop offset="100%" stop-color="#432a48"/>
+    </linearGradient>
+    <linearGradient id="hillNear" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#341f3c"/>
+      <stop offset="100%" stop-color="#241531"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1920" fill="url(#sky)"/>
+  <circle cx="540" cy="760" r="260" fill="url(#sunGlow)"/>
+  <circle cx="540" cy="760" r="115" fill="#fff0cf"/>
+  <path d="M0 900 L120 840 L260 890 L400 820 L540 880 L680 810 L820 870 L960 830 L1080 880 L1080 960 L0 960 Z" fill="url(#hillFar)"/>
+  <path d="M0 960 L140 920 L300 970 L460 900 L620 960 L780 900 L940 950 L1080 910 L1080 980 L0 980 Z" fill="url(#hillNear)"/>
+  <rect x="0" y="960" width="1080" height="960" fill="url(#water)"/>
+  <g opacity="0.5" stroke="#ffe3b8" stroke-width="3" stroke-linecap="round">
+    <line x1="480" y1="1010" x2="600" y2="1010"/>
+    <line x1="460" y1="1070" x2="620" y2="1070"/>
+    <line x1="440" y1="1140" x2="640" y2="1140"/>
+    <line x1="420" y1="1220" x2="660" y2="1220"/>
+    <line x1="400" y1="1310" x2="680" y2="1310"/>
+  </g>
+</svg>

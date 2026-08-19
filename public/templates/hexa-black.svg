@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#141414"/>
+      <stop offset="100%" stop-color="#020202"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0cf83"/>
+      <stop offset="100%" stop-color="#a97e2d"/>
+    </linearGradient>
+    <radialGradient id="spot" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#caa14d" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#caa14d" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="50"/></filter>
+    <path id="hex" d="M0 -46 L40 -23 L40 23 L0 46 L-40 23 L-40 -23 Z" fill="none" stroke="url(#gold)" stroke-width="1.6"/>
+  </defs>
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+
+  <circle cx="820" cy="260" r="260" fill="url(#spot)" filter="url(#soft)" opacity="0.6"/>
+  <circle cx="180" cy="1680" r="260" fill="url(#spot)" filter="url(#soft)" opacity="0.5"/>
+
+  <g opacity="0.55">
+    <use href="#hex" transform="translate(120,120) scale(1.1)"/>
+    <use href="#hex" transform="translate(260,90) scale(0.8)"/>
+    <use href="#hex" transform="translate(60,260) scale(0.9)"/>
+    <use href="#hex" transform="translate(940,160) scale(1)"/>
+    <use href="#hex" transform="translate(1000,320) scale(0.8)"/>
+    <use href="#hex" transform="translate(820,80) scale(0.7)"/>
+    <use href="#hex" transform="translate(160,420) scale(0.7)"/>
+    <use href="#hex" transform="translate(940,460) scale(1.1)"/>
+    <use href="#hex" transform="translate(80,560) scale(1.2)"/>
+    <use href="#hex" transform="translate(1010,600) scale(0.9)"/>
+    <use href="#hex" transform="translate(180,650) scale(0.8)"/>
+    <use href="#hex" transform="translate(900,720) scale(0.7)"/>
+    <use href="#hex" transform="translate(60,1300) scale(0.9)"/>
+    <use href="#hex" transform="translate(190,1420) scale(0.7)"/>
+    <use href="#hex" transform="translate(940,1360) scale(1)"/>
+    <use href="#hex" transform="translate(1000,1500) scale(0.8)"/>
+    <use href="#hex" transform="translate(120,1560) scale(1.1)"/>
+    <use href="#hex" transform="translate(880,1560) scale(0.7)"/>
+    <use href="#hex" transform="translate(260,1720) scale(0.8)"/>
+    <use href="#hex" transform="translate(80,1820) scale(0.9)"/>
+    <use href="#hex" transform="translate(960,1780) scale(1.1)"/>
+    <use href="#hex" transform="translate(1010,1880) scale(0.7)"/>
+    <use href="#hex" transform="translate(400,1800) scale(0.7)"/>
+    <use href="#hex" transform="translate(700,1850) scale(0.8)"/>
+  </g>
+
+  <use href="#hex" transform="translate(820,260) scale(1.5)" stroke-width="2.4" opacity="0.95"/>
+  <use href="#hex" transform="translate(180,1680) scale(1.4)" stroke-width="2.2" opacity="0.9"/>
+</svg>

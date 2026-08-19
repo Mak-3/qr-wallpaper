@@ -1,69 +1,203 @@
-import Image from "next/image";
+import Link from "next/link"
+import { templates, getTemplateById } from "@/lib/templates"
+import TemplateGallery from "@/components/TemplateGallery"
+import WallpaperPreview from "@/components/WallpaperPreview"
+
+const heroTemplate = getTemplateById("midnight-gold")!
+
+const steps = [
+  {
+    number: "01",
+    title: "Choose a template",
+    description: "Browse a curated set of premium lock-screen designs.",
+  },
+  {
+    number: "02",
+    title: "Add your QR",
+    description:
+      "Upload an existing QR code, or enter a link and style one yourself — colors, shapes, even a logo.",
+  },
+  {
+    number: "03",
+    title: "Pay & download",
+    description:
+      "Preview for free. Pay once, from ₹9, to download the crisp, watermark-free wallpaper.",
+  },
+]
+
+const useCases = [
+  {
+    title: "Collect payments, instantly",
+    description:
+      "Put your UPI QR on your lock screen so anyone can scan and pay. No more digging through your gallery for a blurry payment QR screenshot.",
+    icon: (
+      <>
+        <path d="M4 9V6a2 2 0 0 1 2-2h3" />
+        <path d="M20 9V6a2 2 0 0 0-2-2h-3" />
+        <path d="M4 15v3a2 2 0 0 0 2 2h3" />
+        <path d="M20 15v3a2 2 0 0 1-2 2h-3" />
+        <rect x="9" y="9" width="2.5" height="2.5" />
+        <rect x="13.5" y="9" width="1.5" height="1.5" />
+        <rect x="9" y="13" width="1.5" height="1.5" />
+        <rect x="13" y="13" width="3" height="3" />
+      </>
+    ),
+  },
+  {
+    title: "Store emergency info",
+    description:
+      "Encode your blood group, allergies, or an emergency contact. Anyone can scan your lock screen in seconds — no unlocking required.",
+    icon: (
+      <>
+        <path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3Z" />
+        <path d="M12 9v6M9 12h6" />
+      </>
+    ),
+  },
+  {
+    title: "Share your socials",
+    description:
+      "Link your Instagram, portfolio, or contact card. Hand someone your phone and let them scan — no typing, no searching.",
+    icon: (
+      <>
+        <circle cx="6" cy="12" r="2.2" />
+        <circle cx="18" cy="6" r="2.2" />
+        <circle cx="18" cy="18" r="2.2" />
+        <path d="M8 11l8-4M8 13l8 4" />
+      </>
+    ),
+  },
+]
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="flex-1">
+      <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-8 sm:px-10">
+        <span className="font-serif text-xl tracking-tight text-neutral-900">
+          QR Wallpaper
+        </span>
+        <nav className="hidden items-center gap-8 sm:flex">
+          <Link
+            href="#use-cases"
+            className="text-sm font-medium text-neutral-600 transition hover:text-neutral-900"
+          >
+            Use cases
+          </Link>
+          <Link
+            href="#templates"
+            className="text-sm font-medium text-neutral-600 transition hover:text-neutral-900"
+          >
+            Templates
+          </Link>
+          <Link
+            href="#pricing"
+            className="text-sm font-medium text-neutral-600 transition hover:text-neutral-900"
+          >
+            Pricing
+          </Link>
+        </nav>
+      </header>
+
+      <section className="mx-auto max-w-6xl px-6 pt-6 pb-20 sm:px-10 sm:pt-10 sm:pb-28">
+        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
+          <div className="order-2 lg:order-1">
+            <span className="inline-flex items-center rounded-full border border-neutral-900/15 px-4 py-1.5 text-xs font-medium tracking-wide text-neutral-600">
+              Not just a wallpaper
+            </span>
+            <h1 className="mt-5 font-serif text-[2.6rem] leading-[1.08] tracking-tight text-neutral-900 sm:text-6xl">
+              The QR that&apos;s
+              <br />
+              <span className="italic">always with you.</span>
+            </h1>
+            <p className="mt-6 max-w-md text-lg text-neutral-600">
+              Collect payments, store emergency info, or share your socials — right from your
+              lock screen. No more hunting through screenshots for your payment QR.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <Link
+                href="#templates"
+                className="inline-flex items-center justify-center rounded-full bg-neutral-900 px-8 py-4 text-sm font-medium tracking-wide text-white transition hover:bg-neutral-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900"
+              >
+                Explore templates
+              </Link>
+              <span className="text-sm text-neutral-500">Design free — from ₹9 to download</span>
+            </div>
+          </div>
+
+          <div className="order-1 lg:order-2">
+            <div className="mx-auto max-w-[280px]">
+              <WallpaperPreview template={heroTemplate} qrImage={null} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="use-cases" className="border-y border-neutral-900/5 bg-white/60">
+        <div className="mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-24">
+          <div className="mb-12 max-w-xl">
+            <h2 className="font-serif text-3xl text-neutral-900 sm:text-4xl">
+              One wallpaper. Endless possibilities.
+            </h2>
+            <p className="mt-3 text-neutral-600">
+              Your lock screen is prime real estate — put it to work instead of just looking at
+              it.
+            </p>
+          </div>
+          <div className="grid gap-10 sm:grid-cols-3 sm:gap-8">
+            {useCases.map((useCase) => (
+              <div key={useCase.title}>
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-neutral-900 text-white">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-5 w-5"
+                  >
+                    {useCase.icon}
+                  </svg>
+                </div>
+                <h3 className="mt-4 font-serif text-xl text-neutral-900">{useCase.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-neutral-600">
+                  {useCase.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" className="mx-auto max-w-6xl px-6 py-20 sm:px-10">
+        <div className="grid gap-10 sm:grid-cols-3 sm:gap-8">
+          {steps.map((step) => (
+            <div key={step.number}>
+              <span className="font-serif text-sm text-neutral-400">{step.number}</span>
+              <h3 className="mt-3 font-serif text-xl text-neutral-900">{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-neutral-600">
+                {step.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="templates" className="mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-28">
+        <div className="mb-12 max-w-xl">
+          <h2 className="font-serif text-3xl text-neutral-900 sm:text-4xl">
+            Choose your template
+          </h2>
+          <p className="mt-3 text-neutral-600">
+            Every design comes with a predefined space for your QR code — no editing required.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+        <TemplateGallery templates={templates} />
+      </section>
+
+      <footer className="mx-auto max-w-6xl px-6 py-10 text-sm text-neutral-400 sm:px-10">
+        QR Wallpaper
+      </footer>
+    </main>
+  )
 }

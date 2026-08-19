@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#dfe9cd"/>
+      <stop offset="100%" stop-color="#c3d2ac"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8aa86b"/>
+      <stop offset="100%" stop-color="#526f3d"/>
+    </linearGradient>
+    <linearGradient id="leaf2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9bb87c"/>
+      <stop offset="100%" stop-color="#61804a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+
+  <g stroke="#54713f" stroke-width="3" fill="none" opacity="0.85">
+    <path d="M1120 -20 C 980 160, 900 260, 840 420 S 760 700, 700 820"/>
+  </g>
+  <g fill="url(#leaf)" opacity="0.92">
+    <path d="M1000 60 C 1040 20 1100 30 1120 -10 C 1090 40 1080 100 1030 110 C 1000 100 990 80 1000 60 Z"/>
+    <path d="M930 180 C 990 160 1030 190 1070 150 C 1030 200 1030 250 970 250 C 940 230 920 210 930 180 Z"/>
+    <path d="M860 320 C 800 300 760 330 720 300 C 770 340 780 390 840 380 C 865 360 875 340 860 320 Z"/>
+    <path d="M900 300 C 960 280 1000 310 1040 280 C 1000 320 1000 370 940 370 C 915 350 895 330 900 300 Z"/>
+    <path d="M780 480 C 720 470 690 500 650 480 C 695 515 700 560 755 555 C 780 535 790 505 780 480 Z"/>
+  </g>
+  <g fill="url(#leaf2)" opacity="0.9">
+    <path d="M960 120 C 1010 90 1060 100 1090 60 C 1055 110 1050 165 1000 170 C 975 155 960 140 960 120 Z"/>
+    <path d="M800 400 C 850 385 880 415 920 390 C 880 425 878 470 828 465 C 805 448 792 425 800 400 Z"/>
+    <path d="M730 560 C 685 545 655 570 620 550 C 660 585 665 625 715 620 C 738 600 742 580 730 560 Z"/>
+  </g>
+
+  <g stroke="#54713f" stroke-width="2.5" fill="none" opacity="0.7">
+    <path d="M-40 1980 C 60 1860, 110 1780, 150 1660"/>
+  </g>
+  <g fill="url(#leaf)" opacity="0.85">
+    <path d="M40 1900 C 0 1940 -50 1935 -70 1975 C -35 1930 -30 1880 20 1870 C 45 1880 55 1895 40 1900 Z"/>
+    <path d="M100 1800 C 60 1830 15 1815 -10 1850 C 25 1815 30 1770 80 1770 C 105 1785 115 1800 100 1800 Z"/>
+    <path d="M150 1700 C 115 1725 80 1710 60 1740 C 90 1710 95 1670 140 1670 C 160 1682 168 1695 150 1700 Z"/>
+  </g>
+</svg>
