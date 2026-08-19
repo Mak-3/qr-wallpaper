@@ -25,6 +25,34 @@ const steps = [
   },
 ]
 
+const faqs = [
+  {
+    question: "Can I put my UPI QR code on my phone wallpaper?",
+    answer:
+      "Yes. Enter your UPI link (or upload your existing UPI QR image), pick a template and QR style, then download — your payment QR becomes your lock screen, ready to scan any time.",
+  },
+  {
+    question: "Will the QR code still scan properly after I download the wallpaper?",
+    answer:
+      "Yes. QR codes generated in the app use high error correction, and downloads are full resolution, so the code stays scannable even with custom colors, shapes, or a logo.",
+  },
+  {
+    question: "Can I use my own photo as the background instead of a template?",
+    answer:
+      "Yes. Every template lets you swap in your own photo as the background while keeping the same QR placement — your photo, your QR, one wallpaper.",
+  },
+  {
+    question: "Do I have to pay before I can design my wallpaper?",
+    answer:
+      "No. Choosing a template, adding your QR, and styling it are all free. You only pay — starting at ₹9 — when you're ready to download the final, watermark-free wallpaper.",
+  },
+  {
+    question: "What can I encode besides a payment QR?",
+    answer:
+      "Anything a QR code can hold: emergency medical info, a contact card, your Instagram or portfolio link, Wi-Fi credentials, or plain text.",
+  },
+]
+
 const useCases = [
   {
     title: "Collect payments, instantly",
@@ -94,6 +122,12 @@ export default function Home() {
             className="text-sm font-medium text-neutral-600 transition hover:text-neutral-900"
           >
             Pricing
+          </Link>
+          <Link
+            href="#faq"
+            className="text-sm font-medium text-neutral-600 transition hover:text-neutral-900"
+          >
+            FAQ
           </Link>
         </nav>
       </header>
@@ -194,6 +228,45 @@ export default function Home() {
         </div>
         <TemplateGallery templates={templates} />
       </section>
+
+      <section id="faq" className="border-t border-neutral-900/5 bg-white/60">
+        <div className="mx-auto max-w-3xl px-6 py-20 sm:px-10 sm:py-24">
+          <h2 className="font-serif text-3xl text-neutral-900 sm:text-4xl">
+            Frequently asked questions
+          </h2>
+          <div className="mt-8 divide-y divide-neutral-900/10">
+            {faqs.map((faq) => (
+              <details key={faq.question} className="group py-5">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-lg text-neutral-900 marker:content-none">
+                  {faq.question}
+                  <span className="shrink-0 text-neutral-400 transition group-open:rotate-45">
+                    +
+                  </span>
+                </summary>
+                <p className="mt-3 text-sm leading-relaxed text-neutral-600">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          }),
+        }}
+      />
 
       <footer className="mx-auto max-w-6xl px-6 py-10 text-sm text-neutral-400 sm:px-10">
         QR Wallpaper
