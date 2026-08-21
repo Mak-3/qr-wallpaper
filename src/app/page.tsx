@@ -1,9 +1,8 @@
+import Image from "next/image"
 import Link from "next/link"
-import { templates, getTemplateById } from "@/lib/templates"
+import { templates } from "@/lib/templates"
 import TemplateGallery from "@/components/TemplateGallery"
-import WallpaperPreview from "@/components/WallpaperPreview"
-
-const heroTemplate = getTemplateById("midnight-gold")!
+import PhoneFrame from "@/components/PhoneFrame"
 
 const steps = [
   {
@@ -160,7 +159,16 @@ export default function Home() {
 
           <div className="order-1 lg:order-2">
             <div className="mx-auto max-w-[280px]">
-              <WallpaperPreview template={heroTemplate} qrImage={null} />
+              <PhoneFrame>
+                <Image
+                  src="/sunset-lake-wallpaper.png"
+                  alt="Example wallpaper — Sunset Lake template with a styled UPI payment QR code, made with QR Wallpaper"
+                  fill
+                  sizes="280px"
+                  priority
+                  className="object-cover"
+                />
+              </PhoneFrame>
             </div>
           </div>
         </div>
