@@ -1,5 +1,5 @@
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://qrwallpaper.app"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://qrwallpaper.in"
 ).replace(/\/$/, "")
 
 export const SITE_NAME = "QR Wallpaper"
