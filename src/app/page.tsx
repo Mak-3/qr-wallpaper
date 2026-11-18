@@ -14,7 +14,7 @@ const steps = [
     number: "02",
     title: "Add your QR",
     description:
-      "Upload an existing QR code, or enter a link and style one yourself — colors, shapes, even a logo.",
+      "Upload an existing QR code, or enter your UPI ID or a link and style one yourself — colors, shapes, even a logo.",
   },
   {
     number: "03",
@@ -28,7 +28,7 @@ const faqs = [
   {
     question: "Can I put my UPI QR code on my phone wallpaper?",
     answer:
-      "Yes. Enter your UPI link (or upload your existing UPI QR image), pick a template and QR style, then download — your payment QR becomes your lock screen, ready to scan any time.",
+      "Yes. Enter your UPI ID (or upload your existing UPI QR image), pick a template and QR style, then download — your payment QR becomes your lock screen, ready to scan any time.",
   },
   {
     question: "Will the QR code still scan properly after I download the wallpaper?",

@@ -12,13 +12,23 @@ import {
 } from "@/lib/qrStyling"
 import { QRFileError, readLogoFile } from "@/lib/qrFile"
 
-type QRLinkFormProps = {
+export type QRGenerateMode = "upi" | "link"
+
+type QRGenerateFormProps = {
+  mode: QRGenerateMode
   onImageReady: (image: HTMLImageElement) => void
 }
 
 const DEFAULT_STYLE: QRStyleOptions = QR_PRESETS[0].style
 
-export default function QRLinkForm({ onImageReady }: QRLinkFormProps) {
+// UPI VPA format: handle@psp, e.g. name@okaxis or 9876543210@ybl
+const UPI_ID_PATTERN = /^[a-zA-Z0-9._-]{2,256}@[a-zA-Z][a-zA-Z0-9.-]{1,63}$/
+
+function buildUpiUri(upiId: string) {
+  return `upi://pay?pa=${upiId}&cu=INR`
+}
+
+export default function QRGenerateForm({ mode, onImageReady }: QRGenerateFormProps) {
   const [content, setContent] = useState("")
   const [style, setStyle] = useState<QRStyleOptions>(DEFAULT_STYLE)
   const [activePresetId, setActivePresetId] = useState<string | null>(QR_PRESETS[0].id)
@@ -58,9 +68,14 @@ export default function QRLinkForm({ onImageReady }: QRLinkFormProps) {
     }
   }
 
+  const trimmed = content.trim()
+  const isUpi = mode === "upi"
+  const isValidUpiId = UPI_ID_PATTERN.test(trimmed)
+  const canGenerate = isUpi ? isValidUpiId : trimmed.length > 0
+  const showInvalidUpiId = isUpi && trimmed.length > 0 && !isValidUpiId && trimmed.includes("@")
+
   useEffect(() => {
-    const trimmed = content.trim()
-    if (!trimmed) {
+    if (!canGenerate) {
       return
     }
 
@@ -70,7 +85,7 @@ export default function QRLinkForm({ onImageReady }: QRLinkFormProps) {
       setIsGenerating(true)
       setError(null)
       try {
-        const image = await generateStyledQRImage(trimmed, { ...style, logoDataUrl })
+        const image = await generateStyledQRImage(isUpi ? buildUpiUri(trimmed) : trimmed, { ...style, logoDataUrl })
         if (cancelled) return
         onImageReady(image)
       } catch (err) {
@@ -90,20 +105,23 @@ export default function QRLinkForm({ onImageReady }: QRLinkFormProps) {
       clearTimeout(timeout)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [content, style, logoDataUrl])
+  }, [content, mode, style, logoDataUrl])
 
   const lowContrast = hasLowContrast(style)
 
   return (
     <div className="w-full">
       <label htmlFor={inputId} className="block text-sm font-medium text-neutral-700">
-        Link or text to encode
+        {isUpi ? "Your UPI ID" : "Link or text to encode"}
       </label>
       <input
         id={inputId}
         type="text"
-        inputMode="url"
-        placeholder="https://your-link.com"
+        inputMode={isUpi ? "email" : "url"}
+        autoCapitalize="none"
+        autoCorrect="off"
+        spellCheck={false}
+        placeholder={isUpi ? "yourname@okaxis" : "https://your-link.com"}
         value={content}
         onChange={(event) => {
           const value = event.target.value
@@ -246,6 +264,15 @@ export default function QRLinkForm({ onImageReady }: QRLinkFormProps) {
         </div>
       ) : null}
 
+      {showInvalidUpiId ? (
+        <p className="mt-3 text-sm text-amber-600">
+          That doesn&apos;t look like a valid UPI ID. It should look like name@bank.
+        </p>
+      ) : isUpi ? (
+        <p className="mt-3 text-sm text-neutral-500">
+          Anyone who scans this QR can pay you directly from any UPI app.
+        </p>
+      ) : null}
       {lowContrast ? (
         <p className="mt-3 text-sm text-amber-600">
           This color combination may be hard to scan. Try a higher-contrast pairing.

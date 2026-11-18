@@ -2,9 +2,9 @@
 
 import { useState } from "react"
 import QRCodeUploader from "@/components/QRCodeUploader"
-import QRLinkForm from "@/components/QRLinkForm"
+import QRGenerateForm from "@/components/QRGenerateForm"
 
-type QRSource = "upload" | "link"
+type QRSource = "upload" | "upi" | "link"
 
 type QRSourceTabsProps = {
   hasImage: boolean
@@ -23,11 +23,11 @@ export default function QRSourceTabs({ hasImage, onImageReady, onClear }: QRSour
 
   return (
     <div className="w-full">
-      <div className="inline-flex rounded-full border border-neutral-900/10 bg-white/60 p-1 text-sm">
+      <div className="inline-flex max-w-full rounded-full border border-neutral-900/10 bg-white/60 p-1 text-xs sm:text-sm">
         <button
           type="button"
           onClick={() => selectSource("upload")}
-          className={`rounded-full px-4 py-2 font-medium transition ${
+          className={`whitespace-nowrap rounded-full px-3 py-2 font-medium transition sm:px-4 ${
             source === "upload" ? "bg-neutral-900 text-white" : "text-neutral-600 hover:text-neutral-900"
           }`}
         >
@@ -35,8 +35,17 @@ export default function QRSourceTabs({ hasImage, onImageReady, onClear }: QRSour
         </button>
         <button
           type="button"
+          onClick={() => selectSource("upi")}
+          className={`whitespace-nowrap rounded-full px-3 py-2 font-medium transition sm:px-4 ${
+            source === "upi" ? "bg-neutral-900 text-white" : "text-neutral-600 hover:text-neutral-900"
+          }`}
+        >
+          Enter UPI ID
+        </button>
+        <button
+          type="button"
           onClick={() => selectSource("link")}
-          className={`rounded-full px-4 py-2 font-medium transition ${
+          className={`whitespace-nowrap rounded-full px-3 py-2 font-medium transition sm:px-4 ${
             source === "link" ? "bg-neutral-900 text-white" : "text-neutral-600 hover:text-neutral-900"
           }`}
         >
@@ -51,7 +60,7 @@ export default function QRSourceTabs({ hasImage, onImageReady, onClear }: QRSour
             onImageReady={(image) => onImageReady(image)}
           />
         ) : (
-          <QRLinkForm onImageReady={onImageReady} />
+          <QRGenerateForm key={source} mode={source} onImageReady={onImageReady} />
         )}
       </div>
     </div>

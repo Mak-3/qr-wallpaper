@@ -109,7 +109,7 @@ export default function TemplateDetailClient({
 
             {qrImage === null ? (
               <p className="mt-5 text-sm text-neutral-500">
-                Upload a QR code or enter a link to preview your wallpaper for free — pay only
+                Upload a QR code, or enter your UPI ID or a link, to preview your wallpaper for free — pay only
                 when you&apos;re ready to download.
               </p>
             ) : !isUnlocked ? (
